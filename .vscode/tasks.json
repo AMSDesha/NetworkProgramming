@@ -9,6 +9,7 @@
                 "-g",
                 "${file}",
                 "${workspaceFolder}/ServerClass.cpp",
+                "${workspaceFolder}/ClientClass.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
