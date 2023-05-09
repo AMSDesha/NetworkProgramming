@@ -23,7 +23,7 @@ public:
     bool connectToServer();
     virtual void buildUpMsg() = 0;
     void communicate();
-    void setMsg(string msg);
+    void setMsg(char* buffer, int bufferSize);
 
 private:
     char msg[2048];

@@ -99,7 +99,8 @@ void server::handle_clients(int socket)
         int valread = read(socket, buffer, 1024);  
         printf("%s\n", buffer);
 
-        send(socket, hello, strlen(hello), 0);  
+        // Cause an error when comm with two clients ????
+        //send(socket, hello, strlen(hello), 0);  
     }
 }
 

@@ -56,10 +56,7 @@ void client::communicate()
     }
 }
 
-void client::setMsg(string msg)
+void client::setMsg(char* buffer, int bufferSize)
 {
-    for(auto i : msg)
-    {
-        this->msg[i] = msg[i];
-    }
+   strcpy(msg,buffer);
 }
