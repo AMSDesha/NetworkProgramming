@@ -8,10 +8,10 @@ public:
     ~myClient(){};
 public:
     void buildUpMsg(){
-        char buff[2048];
+        char buff[1024];
         strcat(buff,"Sam Macathi#"); // Who am i
         strcat(buff,"Jhon Samuwel#"); // msg to
-        strcat(buff,"Hi Jhon, Did you recive my msg"); // msg
+        strcat(buff,"Hi Jhon, Did you recive my msg \n"); // msg
 
         client::setMsg( buff,sizeof(buff));
     }
@@ -23,10 +23,10 @@ public:
     ~myClient2(){};
 public:
     void buildUpMsg(){
-        char buff[2048];
+        char buff[1024];
         strcat(buff,"Jhon Samuwel#"); // Who am i
         strcat(buff,"Sam Macathi#"); // msg to
-        strcat(buff,"Hi Sam, Yes, great to hear from u"); // msg
+        strcat(buff,"Hi Sam, Yes, great to hear from u \n"); // msg
 
         client::setMsg( buff,sizeof(buff));
     }
@@ -36,10 +36,10 @@ int main(int argc, char const* argv[])
 {  
     myClient client;
     client.setParams(8081,"127.0.0.1");
-    client.connectToServer();
+    int client_fd = client.connectToServer();
     client.buildUpMsg();
     std::thread comm1(&client::communicate,client);
-    comm1.detach();  
+    comm1.detach();
 
     myClient2 client2;
     client2.setParams(8081,"127.0.0.1");
@@ -47,4 +47,8 @@ int main(int argc, char const* argv[])
     client2.buildUpMsg();
     std::thread comm2(&client::communicate,client2);
     comm2.detach();  
+    
+    // this is must otherwise main process will end
+    while(1)
+    {};
 }

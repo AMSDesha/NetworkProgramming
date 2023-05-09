@@ -10,10 +10,10 @@ extern "C" {
 class server{
 
 public:
-    server(int port);
-    ~server();
+    server(){};
+    ~server(){};
     void setupTCPsocket();
-    void handle_clients(int scoketID);
+    virtual void handle_clients(int scoketID) = 0;
 
 
 private:

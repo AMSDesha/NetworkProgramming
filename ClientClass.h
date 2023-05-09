@@ -20,7 +20,7 @@ public:
 
 public:
     bool setParams(int PORT, string IP);
-    bool connectToServer();
+    int connectToServer();
     virtual void buildUpMsg() = 0;
     void communicate();
     void setMsg(char* buffer, int bufferSize);

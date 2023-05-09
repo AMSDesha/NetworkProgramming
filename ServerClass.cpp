@@ -11,16 +11,6 @@ extern "C" {
 #include <unistd.h>  
 }
 
-server::server(int port)
-{
-    mPort = port;
-}
-
-server::~server()
-{
-
-}
-
 void server::setupTCPsocket()
 {
     // Creating socket file descriptor  
@@ -89,18 +79,4 @@ void server::setupTCPsocket()
     }
 }
 
-void server::handle_clients(int socket)
-{
-    char buffer[1024] = { 0 };  
-    char hello[] = "Hello from server"; 
-      
-    while(1)
-    {
-        int valread = read(socket, buffer, 1024);  
-        printf("%s\n", buffer);
-
-        // Cause an error when comm with two clients ????
-        //send(socket, hello, strlen(hello), 0);  
-    }
-}
 

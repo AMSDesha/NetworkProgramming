@@ -24,9 +24,10 @@ bool client::setParams(int PORT, string IP)
     {  
         printf("\nInvalid address/ Address not supported \n");  
     }  
+    return true;
 }
 
-bool client::connectToServer()
+int client::connectToServer()
 {
     int client_fd;
 
@@ -36,7 +37,8 @@ bool client::connectToServer()
             < 0) {  
             printf("\nConnection Failed \n");  
             return -1;  
-    } 
+    }
+    return client_fd;
 }
 
 void client::buildUpMsg()
@@ -51,7 +53,7 @@ void client::communicate()
     while(1)
     { 
         send(sock, msg, strlen(msg), 0);  
-        valread = read(sock, readbuff, 2048);  
+        valread = read(sock, readbuff, 1024);  
         printf("%s\n", readbuff);  
     }
 }
