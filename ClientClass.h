@@ -21,9 +21,9 @@ public:
 public:
     bool setParams(int PORT, string IP);
     int connectToServer();
-    virtual void buildUpMsg() = 0;
-    void communicate();
-    void setMsg(char* buffer, int bufferSize);
+    virtual void communicate() = 0;
+    void readIncoming();
+    void sendMsg( std::string msg );
 
 private:
     char msg[2048];

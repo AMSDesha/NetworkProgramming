@@ -41,24 +41,19 @@ int client::connectToServer()
     return client_fd;
 }
 
-void client::buildUpMsg()
-{
-    //'construct your msg here';
-    msg[0] = 'a';
-}
-
-void client::communicate()
+void client::readIncoming()
 {
     int valread = 0;
     while(1)
     { 
-        send(sock, msg, strlen(msg), 0);  
+        //send(sock, msg, strlen(msg), 0);  
         valread = read(sock, readbuff, 1024);  
         printf("%s\n", readbuff);  
     }
 }
 
-void client::setMsg(char* buffer, int bufferSize)
+void client::sendMsg( std::string msg )
 {
-   strcpy(msg,buffer);
+    const char* msgBuff = msg.c_str();
+    send(sock, msgBuff, msg.length(), 0);  
 }
